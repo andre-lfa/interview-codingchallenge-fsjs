@@ -8,6 +8,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.json({type: 'application/vnd.api+json'}));
 
+require('./controller/list.controller')(app);
+
 app.use(index);
 
 module.exports = app;
