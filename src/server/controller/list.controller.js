@@ -17,4 +17,9 @@ router.post('/create', async (req, res) => {
     }
 });
 
+router.get('/show', async (req, res) => {
+    const allLists = await List.find();
+    return res.status(200).send({allLists});
+}); 
+
 module.exports = app => app.use('/api', router);
