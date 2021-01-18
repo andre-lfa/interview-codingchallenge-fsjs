@@ -1,13 +1,14 @@
 const mongoose = require('../database');
+const Item = require('./item.model');
 
 const ListSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         require: true,
         unique: true
     },
     itens: {
-        type: [String],
+        type: [Item],
     }
 });
 
