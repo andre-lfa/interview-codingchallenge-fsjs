@@ -43,4 +43,15 @@ router.put('/update/:id', async (req, res) => {
     }
 });
 
+router.delete('/delete/:id', async (req, res) => {
+    const {id} = req.params;
+
+    try {
+        const deletedList = await List.findOneAndDelete({_id: id});
+        return res.status(200).send({message: "O Documento com o nome " + deletedList.name + "foi deletado!"})
+    } catch (error) {
+        return res.status(400).send({message: "Não foi possível deletar o documento em questão, favor tentar novamente!"})
+    }
+});
+
 module.exports = app => app.use('/api', router);
